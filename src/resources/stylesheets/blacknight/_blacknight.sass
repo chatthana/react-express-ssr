@@ -5,6 +5,13 @@ html,body
   font-family: 'Source Sans Pro', sans-serif
   font-size: 100%
 
+*
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -ms-box-sizing: border-box
+  -o-box-sizing: border-box
+
 .wrapper
   position: relative
   width: 1080px
@@ -50,7 +57,7 @@ p
 header
   &.nav
     position: relative
-    padding: 10px 0
+    padding: 5px 0
     border-bottom: 1px solid #dadada
     line-height: 40px
   a
@@ -70,3 +77,34 @@ nav[role="navigation"]
       a
         text-decoration: none
         color: inherit
+
+.teaser
+  position: relative
+  width: auto
+  padding: 30px 20px
+  background-color: #222222
+  color: #fff
+  margin: 0 0 20px
+  text-align: center
+
+.row
+  @extend .clearfix
+  margin: 10px 0
+
+[class^="grid"]
+  position: relative
+  float: left
+  padding: 0 10px
+
+@media screen and (min-width: 1080px)
+  .grid-desktop-12
+    width: 100%
+
+  .grid-desktop-6
+    width: 50%
+
+  .grid-desktop-4
+    width: calc(100%/3)
+
+  .grid-desktop-3
+    width: 25%

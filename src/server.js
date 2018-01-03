@@ -2,8 +2,10 @@ import Express from 'express';
 import React from 'react';
 import path from 'path';
 import { renderToString } from 'react-dom/server';
-import {StaticRouter} from 'react-router-dom';
+import { StaticRouter as Router } from 'react-router-dom';
 import bodyParser from 'body-parser';
+
+import router from './routes/api';
 
 import App from './components/App.jsx';
 
@@ -16,9 +18,18 @@ app.use(Express.static(path.join(__dirname, '..', 'dist')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// As the favicon doesn't work when we never add it to the app
+// We simply response with the status of 204
+app.get('/favicon.ico', function(req, res) {
+    return res.status(204);
+});
+
+app.use('/api/v1', router);
+
+// Catch all requests and let the react-router-dom handles the routing
 app.get('*', (req, res, next) => {
   let context = {};
-  let appString = renderToString(<StaticRouter location={req.url} context={context}><App /></StaticRouter>);
+  let appString = renderToString(<Router location={req.url} context={context}><App /></Router>);
   res.render('index', {body: appString});
 });
 
