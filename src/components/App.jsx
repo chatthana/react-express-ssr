@@ -1,12 +1,15 @@
 import React from 'react';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
+import Teaser from './Teaser.jsx';
 
 export default class App extends React.Component {
   render() {
+    let {app_name} = this.props;
     return (
       <div>
-        <Header />
+        <Header app_name={app_name} />
+        <Teaser />
         <Main />
       </div>
     )

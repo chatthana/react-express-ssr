@@ -4,10 +4,11 @@ import Nav from './Nav.jsx';
 
 export default class Header extends React.Component {
   render() {
+    let {app_name} = this.props;
     return (
       <header className="nav">
         <div className="wrapper">
-          <Link className="logo" to="/"><h4 className="no-margin">Rexpress</h4></Link>
+          <Link className="logo" to="/"><h4 className="no-margin">{app_name}</h4></Link>
           <Nav />
         </div>
       </header>

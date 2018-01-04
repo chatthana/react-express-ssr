@@ -29,8 +29,10 @@ app.use('/api/v1', router);
 // Catch all requests and let the react-router-dom handles the routing
 app.get('*', (req, res, next) => {
   let context = {};
-  let appString = renderToString(<Router location={req.url} context={context}><App /></Router>);
-  res.render('index', {body: appString});
+  let app_name = 'ReactExpress';
+  let initial_states = { app_name };
+  let appString = renderToString(<Router location={req.url} context={context}><App {...initial_states} /></Router>);
+  res.render('index', {body: appString, initial_states: JSON.stringify(initial_states)});
 });
 
 app.listen(8081, () => {

@@ -6,4 +6,4 @@ import App from './components/App.jsx';
 import './resources/stylesheets/app.sass';
 
 // Attach the event handler, not the complete DOM as we have server rendered
-hydrate(<BrowserRouter><App /></BrowserRouter>, document.getElementById('app'));
+hydrate(<BrowserRouter><App {...window.__INITIAL_STATE__} /></BrowserRouter>, document.getElementById('app'));
