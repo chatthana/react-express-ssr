@@ -7,7 +7,7 @@ let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 let HtmlInjector = new HtmlWebpackPlugin({
   template: './src/index.html',
-  filename: 'index-client.html',
+  filename: 'index.html',
   inject: 'body'
 });
 

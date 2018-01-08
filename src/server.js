@@ -5,6 +5,8 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import bodyParser from 'body-parser';
 
+import {connect} from 'react-redux';
+
 import router from './routes/api';
 
 import App from './components/App.jsx';
@@ -31,7 +33,12 @@ app.get('*', (req, res, next) => {
   let context = {};
   let app_name = 'ReactExpress';
   let initial_states = { app_name };
-  let appString = renderToString(<Router location={req.url} context={context}><App {...initial_states} /></Router>);
+  let appString = renderToString(
+    <Provider store={store}>
+      <Router location={req.url} context={context}>
+        <App {...initial_states} />
+      </Router>
+    </Provider>);
   res.render('index', {body: appString, initial_states: JSON.stringify(initial_states)});
 });
 

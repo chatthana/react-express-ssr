@@ -14,7 +14,7 @@ export default class Index extends React.Component {
               can run nearly identical code on both server and client and enjoy
               SEO-friendly application of your own
             </p>
-            <Link to="/about/personal">View Details</Link>
+            <Link to="/about/personal" className="button">View Details</Link>
           </div>
         </div>
       </div>
