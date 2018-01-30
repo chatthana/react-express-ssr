@@ -2,13 +2,24 @@ import React from 'react';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Teaser from './Teaser.jsx';
+import {connect} from 'react-redux';
 
 import {createPost} from '../actions/PostAction';
 
-export default class App extends React.Component {
+const mapStateToProps = (state, ownProps) => {
+  return {
+    posts: state.posts
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+
+class App extends React.Component {
   render() {
-    console.log(store);
-    console.log (createPost({title: 'message'}));
     let {app_name} = this.props;
     return (
       <div>
@@ -19,3 +30,5 @@ export default class App extends React.Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

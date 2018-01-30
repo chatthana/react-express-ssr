@@ -9,12 +9,7 @@ import {createPost, activatePost} from './actions/PostAction';
 
 import './resources/stylesheets/app.sass';
 
-const store = configureStore();
-store.dispatch(createPost({title: 'yes', active: false}));
-store.dispatch(createPost({title: 'yes 2', active: false}));
-store.dispatch(activatePost('yes 2'));
-console.log(store.getState());
-
+const store = configureStore({});
 
 hydrate(
 <Provider store={store}>
