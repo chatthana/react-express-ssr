@@ -1,20 +1,29 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Main from './Main.jsx';
-import Teaser from './Teaser.jsx';
-
-import {createPost} from '../actions/PostAction';
+import Header from './presentation/Header.jsx';
+import Router from './Router.jsx';
+import Teaser from './presentation/Teaser.jsx';
 
 export default class App extends React.Component {
+
+  componentWillMount() {
+    this.setState({appName: 'Test'});
+  }
+
+  clickMe() {
+    let c = 1;
+    setInterval(() => {
+      this.setState({appName: c});
+      c++;
+    }, 1000)
+  }
+
   render() {
-    console.log(store);
-    console.log (createPost({title: 'message'}));
-    let {app_name} = this.props;
     return (
       <div>
-        <Header app_name={app_name} />
+        <Header app_name={this.state.appName} />
+        <button onClick={this.clickMe.bind(this)}>Test Me</button>
         <Teaser />
-        <Main />
+        <Router />
       </div>
     )
   }

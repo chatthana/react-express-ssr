@@ -33,17 +33,22 @@ module.exports = [{
       {
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        use: SassExtractor.extract({
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'sass-loader'
-            }
-          ],
-          fallback: 'style-loader'
-        })
+        use: [{
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
+        // use: SassExtractor.extract({
+        //   use: [
+        //     {
+        //       loader: 'css-loader'
+        //     },
+        //     {
+        //       loader: 'sass-loader'
+        //     }
+        //   ],
+        //   fallback: 'style-loader'
+        // })
       },
       {
         test: /\.(png|jpg)$/,
