@@ -1,27 +1,20 @@
 import React from 'react';
-import Header from './presentation/Header.jsx';
-import Router from './Router.jsx';
-import Teaser from './presentation/Teaser.jsx';
+import Header from './presentation/Header';
+import Router from './Router';
+import Teaser from './presentation/Teaser';
 
 export default class App extends React.Component {
 
-  componentWillMount() {
-    this.setState({appName: 'Test'});
-  }
-
-  clickMe() {
-    let c = 1;
-    setInterval(() => {
-      this.setState({appName: c});
-      c++;
-    }, 1000)
+  constructor(props) {
+    super(props);
+    // this.state = {appName: 'Monixa'};
+    this.state = {appName: 'React Express SSR'}
   }
 
   render() {
     return (
       <div>
         <Header app_name={this.state.appName} />
-        <button onClick={this.clickMe.bind(this)}>Test Me</button>
         <Teaser />
         <Router />
       </div>

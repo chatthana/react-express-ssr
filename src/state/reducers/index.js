@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import PostReducer from './PostReducer';
+import features from './FeatureReducer';
 
 export default combineReducers({
-  posts: PostReducer
+  features
 });

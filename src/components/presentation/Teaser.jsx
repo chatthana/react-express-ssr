@@ -5,9 +5,9 @@ export default class Teaser extends React.Component {
     return (
       <div>
         <div className="teaser">
-          <img src="https://www.primefaces.org/wp-content/uploads/2017/09/primereact-transparent-250.png" />
-          <h1>React & Express</h1>
-          <p>Render React on the server with confidence</p>
+          <img src={require('../../resources/images/original_logo.png')} />
+          <h1>Universal React Application</h1>
+          <p>Build your React application that works well on the server and the client sides</p>
         </div>
       </div>
     )

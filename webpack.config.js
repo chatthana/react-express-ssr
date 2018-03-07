@@ -3,15 +3,12 @@ let path = require('path');
 let nodeExternals = require('webpack-node-externals');
 let copyWebpackPlugin = require('copy-webpack-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
-let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 let HtmlInjector = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
   inject: 'body'
 });
-
-let SassExtractor = new ExtractTextWebpackPlugin('stylesheets/app.css');
 
 /**
  * Webpack configuration object
@@ -22,6 +19,9 @@ module.exports = [{
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'client.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
@@ -34,21 +34,12 @@ module.exports = [{
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
         use: [{
+          loader: 'style-loader'
+        },{
           loader: 'css-loader'
         }, {
           loader: 'sass-loader'
         }]
-        // use: SassExtractor.extract({
-        //   use: [
-        //     {
-        //       loader: 'css-loader'
-        //     },
-        //     {
-        //       loader: 'sass-loader'
-        //     }
-        //   ],
-        //   fallback: 'style-loader'
-        // })
       },
       {
         test: /\.(png|jpg)$/,
@@ -66,8 +57,7 @@ module.exports = [{
     historyApiFallback: true
   },
   plugins: [
-    HtmlInjector,
-    SassExtractor
+    HtmlInjector
   ]
 }, {
   entry: './src/server.js',
@@ -81,12 +71,25 @@ module.exports = [{
     publicPath: '/',
     filename: 'server.js'
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images/',
+            name: '[name].[ext]'
+          }
+        }
       }
     ]
   },

@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 
 import router from './routes/api';
 
-import App from './components/App.jsx';
+import App from './components/App';
 
 let app = Express();
 

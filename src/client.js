@@ -1,15 +1,16 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import App from './components/App.jsx';
+import App from './components/App';
 
 import {Provider} from 'react-redux';
 import configureStore from './store/Store';
-import {createPost, activatePost} from './actions/PostAction';
+
+import initialState from './presets/initialState';
 
 import './resources/stylesheets/app.sass';
 
-const store = configureStore({})
+const store = configureStore(initialState);
 
 hydrate(
 <Provider store={store}>
