@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Personal from './Personal';
 
+import './style.sass';
+
 export default class About extends React.Component {
   render() {
     return (

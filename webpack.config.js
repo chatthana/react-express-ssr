@@ -89,8 +89,19 @@ module.exports = [{
             outputPath: 'images/',
             name: '[name].[ext]'
           }
-        }
-      }
+        },
+      },
+      {
+        test: /\.(sass|scss)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'style-loader'
+        },{
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
+      },
     ]
   },
   plugins: [

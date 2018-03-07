@@ -1,4 +1,4 @@
-import {CREATE_FEATURE_SUCCESS} from '../actions/FeatureAction';
+import {CREATE_FEATURE_SUCCESS} from '../actions/FeatureActions';
 
 export default (state = [], action) => {
   switch(action.type) {

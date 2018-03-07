@@ -1,4 +1,27 @@
 export default {
+  teams: [
+    {
+      id: 1,
+      avatar: 'parkboyoung.png',
+      fullname: 'Emily Jane Freija',
+      role: 'Project Director & Lead Developer',
+      profile: 'An software developer and the owner of Lunarmind Corporation'
+    },
+    {
+      id: 2,
+      avatar: 'chrishemsworth.jpg',
+      fullname: 'Nolan Martinez Jr.',
+      role: 'Product Analyst',
+      profile: 'Former product director of Google who initiated the idea of Google Space'
+    },
+    {
+      id: 3,
+      avatar: 'vitalik.jpg',
+      fullname: 'David Hiriggsen',
+      role: 'Developer',
+      profile: 'Former Facebook developer who was in the React Native Team'
+    }
+  ],
   features: [
     {
       id: 1,
@@ -8,7 +31,7 @@ export default {
     {
       id: 2,
       title: 'Redux Ready',
-      content: 'The boilerplate has already intgrated with Redux. This ensures that developers can handle the state directly from the components without messing things up'
+      content: 'The boilerplate has already integrated with Redux. This ensures that developers can handle the state directly from the components without messing things up'
     },
     {
       id: 3,
