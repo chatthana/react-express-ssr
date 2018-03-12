@@ -13,7 +13,7 @@ export default class Index extends React.Component {
               So that the developers/users can develop React applications that are SEO-friendly,
               support all digital marketing campaigns, and respond very well for business needs
             </p>
-            <Link to="/about/personal" className="button red">View Details</Link>
+            <Link to="/about" className="button red">View Details</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Express from 'express';
 import React from 'react';
 import path from 'path';
+import {Provider} from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import bodyParser from 'body-parser';

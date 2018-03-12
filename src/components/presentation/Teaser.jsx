@@ -6,7 +6,7 @@ export default class Teaser extends React.Component {
       <div>
         <div className="teaser">
           <img src={require('../../resources/images/original_logo.png')} />
-          <h1>Universal React Application</h1>
+          <h1 style={{marginTop: '30px'}}>Universal React Application</h1>
           <p>Build your React application that works well on the server and the client sides</p>
         </div>
       </div>

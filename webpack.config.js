@@ -10,6 +10,35 @@ let HtmlInjector = new HtmlWebpackPlugin({
   inject: 'body'
 });
 
+let commonLoaders = [
+  {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: 'babel-loader'
+  },
+  {
+    test: /\.(sass|scss)$/,
+    exclude: /node_modules/,
+    use: [{
+      loader: 'style-loader'
+    },{
+      loader: 'css-loader'
+    }, {
+      loader: 'sass-loader'
+    }]
+  },
+  {
+    test: /\.(png|jpg)$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        outputPath: 'images/',
+        name: '[name].[ext]'
+      }
+    }
+  }
+];
+
 /**
  * Webpack configuration object
  */
@@ -24,34 +53,7 @@ module.exports = [{
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.(sass|scss)$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'style-loader'
-        },{
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }]
-      },
-      {
-        test: /\.(png|jpg)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            outputPath: 'images/',
-            name: '[name].[ext]'
-          }
-        }
-      }
-    ]
+    rules: commonLoaders
   },
   devServer: {
     historyApiFallback: true
@@ -75,34 +77,7 @@ module.exports = [{
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.(png|jpg)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            outputPath: 'images/',
-            name: '[name].[ext]'
-          }
-        },
-      },
-      {
-        test: /\.(sass|scss)$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'style-loader'
-        },{
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }]
-      },
-    ]
+    rules: commonLoaders
   },
   plugins: [
     new copyWebpackPlugin([{

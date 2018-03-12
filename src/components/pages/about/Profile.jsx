@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => ({
   teams: state.teams
 });
 
-export default (connect(mapStateToProps, {}))(class Personal extends Component {
+export default (connect(mapStateToProps, {}))(class Profile extends Component {
   render() {
     return (
       <div>
@@ -23,7 +23,7 @@ export default (connect(mapStateToProps, {}))(class Personal extends Component {
           </div>
           <div className="row">
             {this.props.features.map(feature => {
-              return (<div className="grid-desktop-4">
+              return (<div className="grid-desktop-4" key={feature.id}>
                 <h4>{feature.title}</h4>
                 <p>{feature.content}</p>
               </div>)
@@ -36,14 +36,14 @@ export default (connect(mapStateToProps, {}))(class Personal extends Component {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row with-medium-vertical-margin">
             <div className="grid-desktop-12">
               <h1 style={{textAlign:'center'}}>Our Team</h1>
             </div>
           </div>
           <div className="row">
             {this.props.teams.map(team => {
-              return (<div className="grid-desktop-4" style={{textAlign:'center'}}>
+              return (<div className="grid-desktop-4" key={team.id} style={{textAlign:'center'}}>
                 <div className="profile-avatar-container">
                   <img src={require('../../../resources/images/' + team.avatar)} alt=""/>
                 </div>
