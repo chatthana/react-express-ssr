@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {request_team_members} from '../../../state/actions/TeamActions';
 
 const mapStateToProps = (state, ownProps) => ({
   features: state.features,
-  teams: state.teams
+  team: state.team
 });
 
-export default (connect(mapStateToProps, {}))(class Profile extends Component {
+const mapDispatchToProps = dispatcher => ({
+  request_team_members: () => dispatcher(request_team_members())
+});
+
+export default (connect(mapStateToProps, mapDispatchToProps))(class Profile extends Component {
+
+  componentDidMount() {
+    this.props.request_team_members();
+  }
+
   render() {
     return (
       <div>
@@ -42,14 +52,14 @@ export default (connect(mapStateToProps, {}))(class Profile extends Component {
             </div>
           </div>
           <div className="row">
-            {this.props.teams.map(team => {
-              return (<div className="grid-desktop-4" key={team.id} style={{textAlign:'center'}}>
+            {this.props.team.members.length > 0 && this.props.team.members.map(member => {
+              return (<div className="grid-desktop-4" key={member.id} style={{textAlign:'center'}}>
                 <div className="profile-avatar-container">
-                  <img src={require('../../../resources/images/' + team.avatar)} alt=""/>
+                  <img src={require('../../../resources/images/' + member.avatar)} alt=""/>
                 </div>
-                <h4>{team.fullname}</h4>
-                <h6 className="team-title">{team.role}</h6>
-                <p>{team.profile}</p>
+                <h4>{member.fullname}</h4>
+                <h6 className="team-title">{member.role}</h6>
+                <p>{member.profile}</p>
                 <button className="button red">Connect +</button>
               </div>)
             })}

@@ -2,6 +2,7 @@ import Express from 'express';
 import React from 'react';
 import path from 'path';
 import {Provider} from 'react-redux';
+import configureStore from './store/Store';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import bodyParser from 'body-parser';
@@ -11,6 +12,10 @@ import {connect} from 'react-redux';
 import router from './routes/api';
 
 import App from './components/App';
+
+import initialState from './presets/initialState';
+
+let store = configureStore(initialState);
 
 let app = Express();
 

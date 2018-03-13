@@ -17,17 +17,6 @@ let commonLoaders = [
     use: 'babel-loader'
   },
   {
-    test: /\.(sass|scss)$/,
-    exclude: /node_modules/,
-    use: [{
-      loader: 'style-loader'
-    },{
-      loader: 'css-loader'
-    }, {
-      loader: 'sass-loader'
-    }]
-  },
-  {
     test: /\.(png|jpg)$/,
     use: {
       loader: 'file-loader',
@@ -38,6 +27,25 @@ let commonLoaders = [
     }
   }
 ];
+
+let clientStyleLoader = {
+  test: /\.(sass|scss)$/,
+  exclude: /node_modules/,
+  use: [{
+    loader: 'style-loader'
+  },{
+    loader: 'css-loader'
+  }, {
+    loader: 'sass-loader'
+  }]
+};
+
+let universalStyleLoader = Object.assign({}, clientStyleLoader);
+universalStyleLoader.use = [{
+  loader: 'css-loader'
+}, {
+  loader: 'sass-loader'
+}];
 
 /**
  * Webpack configuration object
@@ -53,7 +61,7 @@ module.exports = [{
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: commonLoaders
+    rules: commonLoaders.concat(clientStyleLoader)
   },
   devServer: {
     historyApiFallback: true
@@ -77,7 +85,7 @@ module.exports = [{
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: commonLoaders
+    rules: commonLoaders.concat(universalStyleLoader)
   },
   plugins: [
     new copyWebpackPlugin([{
