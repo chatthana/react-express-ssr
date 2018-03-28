@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {request_team_members} from '../../../state/actions/TeamActions';
+import LoaderContainer from '../../presentation/LoaderContainer';
 
 const mapStateToProps = (state, ownProps) => ({
   features: state.features,
@@ -52,7 +53,7 @@ export default (connect(mapStateToProps, mapDispatchToProps))(class Profile exte
             </div>
           </div>
           <div className="row">
-            {this.props.team.members.length > 0 && this.props.team.members.map(member => {
+            {this.props.team.members.length > 0 ? this.props.team.members.map(member => {
               return (<div className="grid-desktop-4" key={member.id} style={{textAlign:'center'}}>
                 <div className="profile-avatar-container">
                   <img src={require('../../../resources/images/' + member.avatar)} alt=""/>
@@ -62,7 +63,7 @@ export default (connect(mapStateToProps, mapDispatchToProps))(class Profile exte
                 <p>{member.profile}</p>
                 <button className="button red">Connect +</button>
               </div>)
-            })}
+            }) : <LoaderContainer />}
           </div>
         </div>
       </div>

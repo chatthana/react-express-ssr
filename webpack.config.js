@@ -17,6 +17,17 @@ let commonLoaders = [
     use: 'babel-loader'
   },
   {
+    test: /\.(otf|eot|png|svg|ttf|woff|woff2)(\?[\s\S]+)?$/,
+    include: [path.resolve('node_modules/font-awesome/fonts')],
+    use: {
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: '[name].[ext]'
+      }
+    }
+  },
+  {
     test: /\.(png|jpg)$/,
     use: {
       loader: 'file-loader',
