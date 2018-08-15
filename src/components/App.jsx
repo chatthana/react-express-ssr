@@ -7,7 +7,6 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.state = {appName: 'Monixa'};
     this.state = {appName: 'React Express SSR'}
   }
 

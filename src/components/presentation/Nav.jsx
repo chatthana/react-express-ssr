@@ -7,7 +7,7 @@ export default class Nav extends React.Component {
       <nav role="navigation" className="clearfix">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/about/personal">About</Link></li>
+          <li><Link to="/about">About</Link></li>
         </ul>
       </nav>
     )
