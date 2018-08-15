@@ -1,4 +1,3 @@
-# React Express for Server Side Rendering
+# React Express SSR #
 
-THIS IS THE EXPERIMENTAL PROJECT
-================================
+### A simple yet powerful boilerplate for React application with Server Rendering capability ###
