@@ -1,31 +1,21 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Main from './Main.jsx';
-import Teaser from './Teaser.jsx';
-import {connect} from 'react-redux';
+import Header from './presentation/Header';
+import Router from './Router';
+import Teaser from './presentation/Teaser';
 
-import {createPost} from '../actions/PostAction';
+export default class App extends React.Component {
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    posts: state.posts
+  constructor(props) {
+    super(props);
+    this.state = {appName: 'React Express SSR'}
   }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-class App extends React.Component {
   render() {
-    let {app_name} = this.props;
     return (
       <div>
-        <Header app_name={app_name} />
+        <Header app_name={this.state.appName} />
         <Teaser />
-        <Main />
+        <Router />
       </div>
     )
   }

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Profile from './Profile';
 
-import Personal from './Personal.jsx';
+import './style.sass';
 
 export default class About extends React.Component {
   render() {
+    const baseComponentUrl = this.props.match.path;
     return (
       <Switch>
-        <Route exact path="/about" component={Personal} />
-        <Route path="/about/personal" component={Personal} />
+        <Route exact path={baseComponentUrl} component={Profile} />
       </Switch>
     )
   }

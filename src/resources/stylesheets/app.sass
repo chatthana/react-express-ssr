@@ -1,1 +1,14 @@
+
 @import blacknight/blacknight
+$fa-font-path: "~font-awesome/fonts"
+@import "~font-awesome/scss/font-awesome.scss"
+
+@keyframes rotateMe
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+.teaser
+  > img
+    animation: rotateMe 3000ms ease-in-out infinite

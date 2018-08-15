@@ -1,9 +1,9 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Index from './Index.jsx';
-import About from './About.jsx';
+import Index from './pages/home';
+import About from './pages/about';
 
-export default class Main extends React.Component {
+export default class Router extends React.Component {
   render() {
     return (
       <Switch>

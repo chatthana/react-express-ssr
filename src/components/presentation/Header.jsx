@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Nav from './Nav.jsx';
+import Nav from './Nav';
 
 export default class Header extends React.Component {
+
   render() {
     let {app_name} = this.props;
     return (
